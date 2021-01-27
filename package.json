@@ -1,0 +1,19 @@
+{
+  "name": "psql-event-point",
+  "version": "1.0.0",
+  "description": "",
+  "main": "client.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/castroneto/PSQL-EVENT-POINT.git"
+  },
+  "author": "castroneto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/castroneto/PSQL-EVENT-POINT/issues"
+  },
+  "homepage": "https://github.com/castroneto/PSQL-EVENT-POINT#readme"
+}
