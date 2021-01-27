@@ -1,18 +1,24 @@
-const { Client } = require('pg')
+const { Client } = require('pg');
 
+require('dotenv').config();
+
+const events = require("./events");
 
 const client = new Client({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'postgres',
-    password: 'Postgres2019!',
-    port: 5432,
-})
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASS,
+    port: process.env.DB_PORT,
+});
 
 client.connect();
 
-client.query('LISTEN "myEvent"');
-client.on('notification', function (data) {
-    console.log(data.payload);
-});
+events((eventListener) => client.query('LISTEN ' + eventListener));
 
+client.on('notification', function (data) {
+    events(function (eventListener, func) {
+        if (eventListener == data.channel)
+            func(data.payload)
+    });
+});

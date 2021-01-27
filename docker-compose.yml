@@ -11,6 +11,6 @@ services:
       - postgres-compose-network
 
 
-networks: 
+networks:
   postgres-compose-network:
     driver: bridge
